@@ -24,3 +24,4 @@ public/js/app.js
 horizon.log
 *.DS_Store
 /MongoDB
+/public/build
