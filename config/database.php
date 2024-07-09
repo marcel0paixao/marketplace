@@ -108,7 +108,37 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
-
+        
+        'mongodb'    => [
+            'driver'  => 'mongodb',
+            'host'     => env('MONGO_HOST', '127.0.0.1'),
+            'port'     => env('MONGO_PORT', 27017),
+            'database' => env('MONGO_DATABASE', 'homestead'),
+            'username' => env('MONGO_USERNAME', 'homestead'),
+            'password' => env('MONGO_PASSWORD', 'secret'),
+            'options' => [
+                // here you can pass more settings to the Mongo Driver Manager
+                // see https://www.php.net/manual/en/mongodb-driver-manager.construct.php under "Uri Options" for a list of complete parameters that you can use
+                'ssl' => true,
+                'tls' => (bool) env('MONGO_TLS', false),
+                // 'tlsCAFile' => env('MONGO_TLS_CERT', null),
+                // 'authSource' => 'admin',
+                'database' => env('MONGO_AUTHENTICATION_DATABASE')
+            ],
+            'driverOptions' => [
+                'serverApi' => 1,
+                // 'context' => [
+                //     'ssl' => [
+                //         'cafile' => '/var/www/trabalista-app/cert_ssl/mongodb.pem',
+                //         'allow_self_signed' => true,
+                //         'verify_peer' => true,
+                //         'verify_peer_name' => true,
+                //         'verify_expiry' => true,
+                //     ]
+                // ]
+            ],
+            'dsn' => env('APP_ENV') !== 'local' ? env('MONGO_DSN') : null
+        ],
     ],
 
     /*

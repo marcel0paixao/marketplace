@@ -1,4 +1,4 @@
-FROM webdevops/php-nginx:8.1
+FROM webdevops/php-nginx:8.2
 
 LABEL maintainer="Code Sense"
 
@@ -26,15 +26,15 @@ RUN   curl -fsSL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash - \
 RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
-RUN pecl uninstall -r redis \
-    && pecl install redis-${REDIS_LIB_VERSION} \
-    && docker-php-ext-enable redis
+# RUN pecl uninstall -r redis \
+#     && pecl install redis-${REDIS_LIB_VERSION} \
+#     && docker-php-ext-enable redis
 
 RUN mkdir -p /var/lib/redis && chown -R sail:sail /var/lib/redis
 
-RUN pecl uninstall -r mongodb \
-    && pecl install mongodb \
-    && docker-php-ext-enable mongodb
+# RUN pecl uninstall -r mongodb \
+#     && pecl install mongodb \
+#     && docker-php-ext-enable mongodb
 
 COPY vhost.conf /opt/docker/etc/nginx
 COPY 10-location-root.conf /opt/docker/etc/nginx/vhost.common.d
