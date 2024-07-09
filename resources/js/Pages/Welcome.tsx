@@ -81,7 +81,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }: PageProps<
                                                 <h2 className="text-xl font-semibold text-black dark:text-white">Documentation</h2>
 
                                                 <p className="mt-4 text-sm/relaxed">
-                                                    Laravel hassss wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
+                                                    Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
                                                 </p>
                                             </div>
                                         </div>
