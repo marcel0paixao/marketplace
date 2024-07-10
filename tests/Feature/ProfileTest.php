@@ -16,7 +16,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->get('/sdfdfs');
+            ->get('/profile');
 
         $response->assertOk();
     }
