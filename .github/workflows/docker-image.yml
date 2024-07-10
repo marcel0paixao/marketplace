@@ -56,15 +56,15 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build Docker images
-      run: docker-compose -f docker-compose.yml build
+      run: docker-compose -f docker-compose.local.yml build --force-recreate
 
     - name: Run Laravel tests
       run: |
-        docker-compose -f docker-compose.yml up -d
-        docker-compose -f docker-compose.yml exec -T marketplace php artisan key:generate
-        docker-compose -f docker-compose.yml exec -T marketplace composer install
-        docker-compose -f docker-compose.yml exec -T marketplace php artisan migrate --force
-        docker-compose -f docker-compose.yml exec -T marketplace vendor/bin/phpunit
+        docker-compose -f docker-compose.local.yml up -d
+        docker-compose -f docker-compose.local.yml exec -T marketplace php artisan key:generate
+        docker-compose -f docker-compose.local.yml exec -T marketplace composer install
+        docker-compose -f docker-compose.local.yml exec -T marketplace php artisan migrate --force
+        docker-compose -f docker-compose.local.yml exec -T marketplace vendor/bin/phpunit
       env:
         DB_CONNECTION: mysql
         DB_HOST: mysql
