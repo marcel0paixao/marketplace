@@ -1,5 +1,5 @@
 # For more information: https://laravel.com/docs/sail
-version: '1'
+version: '1.0'
 services:
     marketplace:
         build:
