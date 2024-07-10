@@ -1,10 +1,8 @@
 name: Push-to-EC2
-
 on:
   push:
     branches:
       - main
-
 jobs:
   deploy:
     name: Deploy to EC2
@@ -13,19 +11,13 @@ jobs:
     - name: Checkout the files
       uses: actions/checkout@v3
 
-    - name: Set up SSH agent
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
-
     - name: Copy files with SSH
       uses: easingthemes/ssh-deploy@main
-      with:
-        args: "-rltgoDzvO --delete"
       env:
         SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+        ARGS: "-rltgoDzvO --delete"
         SOURCE: "./"
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         TARGET: "/var/www/marketplace"
-        EXCLUDE: "/dist/, /node_modules/, /vendor, /redis, /public/build, **.env, rebuild_app.sh, watcher.sh"
+        EXCLUDE: "/dist/, /node_modules/, /vendor, /redis,, **.env, rebuild_app.sh, watcher.sh"
