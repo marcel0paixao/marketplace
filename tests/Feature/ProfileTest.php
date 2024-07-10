@@ -34,7 +34,7 @@ class ProfileTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile2');
+            ->assertRedirect('/profile');
 
         $user->refresh();
 

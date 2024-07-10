@@ -1,4 +1,4 @@
-name: Laravel CI
+name: Laravel Image CI
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  laravel-docker-iamge-tests:
+  laravel-docker-image-tests:
     runs-on: ubuntu-latest
 
     services:
